@@ -2,7 +2,9 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import { Navbar } from 'react-bootstrap';
 import NavBar from './components/Navbar/Navbar'
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import ItemCount from './components/ItemCount/ItemCount';
+
 
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
     <div className="App">
       <NavBar/>
       <ItemListContainer greeting='Bienvenidos a Mi Tienda!'/>
+      <ItemCount min={1} max={10} />
     </div>
   )
 }
