@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Item = ({productos}) => {
+const Item = ({prod}) => {
 
     return (
         <div>
