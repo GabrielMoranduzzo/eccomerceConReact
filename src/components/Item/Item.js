@@ -19,7 +19,7 @@ const Item = ({prod}) => {
                         {prod.precio}
                     </div>
                     <div className="card-footer">
-                        <button className='btn btn-outline' >
+                        <button className='btn' >
                             Detalle del producto
                         </button>
                     </div>
