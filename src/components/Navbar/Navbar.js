@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import React from 'react'
 import Container from 'react-bootstrap/Container';
 import { Navbar, Nav } from 'react-bootstrap';
@@ -12,13 +13,16 @@ const NavBar = () => {
         
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <img className='logo' src={logo} alt=""/>
+                    <Link to='/'>
+                        <img className='logo' src={logo} alt=""/>
+                    </Link>
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Shop</Nav.Link>
-                        <Nav.Link href="#pricing">Login</Nav.Link>
+                        <Link to="/categoria/aperitivos y otros">Aperitivos y otros</Link>
+                        <Link to="/categoria/whiskies y destilados">Whiskies y destilados</Link>
                     </Nav>
-                    <CartWidget/>
+                    <Link to='/Cart'>
+                        <CartWidget/>
+                    </Link>
                 </Container>
             </Navbar>
         
