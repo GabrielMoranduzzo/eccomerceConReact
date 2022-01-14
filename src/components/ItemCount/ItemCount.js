@@ -25,7 +25,7 @@ const ItemCount = ({min, max}) => {
 
     return (
         <div>
-            <h2>Contador</h2>
+            
             <button onClick={ handleDecrement}>-</button>
             {count}
             <button onClick={handleIncrement}>+</button>

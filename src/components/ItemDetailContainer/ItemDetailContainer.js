@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { getFetch } from "../helper/mock"
+import ItemCount from "../ItemCount/ItemCount"
 import ItemDetail from "../ItemDetail/ItemDetail"
 
 
@@ -9,7 +10,7 @@ import ItemDetail from "../ItemDetail/ItemDetail"
 const ItemDetailContainer = () => {
     const [producto, setproducto] = useState({})
 
-    const {idDetalle} = useParams
+    const {idDetalle} = useParams()
 
     useEffect(()=> {
         getFetch
@@ -20,6 +21,7 @@ const ItemDetailContainer = () => {
     return (
         <div>
            <ItemDetail producto={producto} />
+           <ItemCount min={1} max={10} />
         </div>
     )
 }
