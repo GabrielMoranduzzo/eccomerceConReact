@@ -28,7 +28,7 @@ const ItemCount = ({min, max, onAdd}) => {
         <div className='contador'>
             <h1>{count}</h1>
             <button onClick={ handleDecrement}>-</button>
-            <button onClick={onAdd}>Agregar al Carrito</button>
+            <button onClick={()=> onAdd(1)}>Agregar al Carrito</button>
             <button onClick={handleIncrement}>+</button>
         </div>
     )
