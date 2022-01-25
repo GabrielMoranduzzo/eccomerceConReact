@@ -31,10 +31,10 @@ const ItemDetail = ({producto}) => {
                     </div>
                 </div>
 
-                {show ? <ItemCount min={1} max={10} onAdd={onAdd} /> : 
+                {show ? <ItemCount min={1} max={50} onAdd={onAdd} /> : 
                 <div>   
-                <Link to='/cart'><button> Terminar la compra</button></Link>
-                <Link to='/'><button> Seguir comprando</button></Link>
+                <Link to='/cart'><button className='btn btn-success'> Terminar la compra</button></Link>
+                <Link to='/'><button className='btn btn-warning'> Seguir comprando</button></Link>
                 </div>}
         </div>
     )

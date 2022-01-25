@@ -12,36 +12,26 @@ export const CartContextProvider = ({children}) => {
 
     const [cartList, setCartList] = useState([])
 
-    function agregarAlCarrito(items,cantidad) {
-        const indice = cartList.findIndex(i => i.id === items.id)
-
-        if (indice > -1){
-            const cantidadVieja = cartList[indice].cantidad
-
-            let cantidadNueva = cantidadVieja + items.cantidad
-
-            cartList[indice].cantidad= cantidadNueva
-
-            let arrAux = [...cartList]
-            setCartList(arrAux)
-            sumarCantidad()
+    function agregarAlCarrito(items) {    
+        const indice = cartList.findIndex((i) => i.id === items.id);
+       
+        if (indice > -1) {
+          const cantidadVieja = cartList[indice].cantidad;
+          cartList.splice(indice, 1);  // El método splice() cambia el contenido de un array eliminando elementos existentes y/o agregando nuevos elementos. 
+          setCartList([...cartList,
+            { ...items, cantidad: items.cantidad+ cantidadVieja },
+          ]);
         } else {
-            setCartList([...cartList, items])
+          setCartList([...cartList, items]);
         }
-    }
+      }
 
     function vaciarCarrito() {
         setCartList([])
     }
 
-    const sumarCantidad = (item, cantidad) => {
-        const copiaCarrito = [...cartList];
-        copiaCarrito.forEach((producto) => {
-            producto.id === item.id && (producto.cantidad += cantidad);
-        })
-    }
 
-    function eliminarItem(id) {
+    const eliminarItem = (id) => {
         const itemFiltrado = cartList.filter((producto) => producto.id !== id)
         setCartList(itemFiltrado)
     }
@@ -50,6 +40,14 @@ export const CartContextProvider = ({children}) => {
         let count = 0
         cartList.forEach((producto) => {
             count += producto.precio * producto.cantidad
+        });
+        return count
+    }
+
+    const totalUnidades = () => {
+        let count = 0
+        cartList.forEach((producto) =>{
+            count += producto.cantidad
         })
         return count
     }
@@ -60,6 +58,7 @@ export const CartContextProvider = ({children}) => {
             agregarAlCarrito,
             eliminarItem,
             vaciarCarrito,
+            totalUnidades,
             total
         }} >
             {children}

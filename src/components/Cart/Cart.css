@@ -1,0 +1,24 @@
+.buttonCartVacio {
+    margin-left: 500px;
+}
+
+.cartContainer {
+    margin: 50px;
+    display: flex;
+    border: 2px solid gray;
+}
+
+.imgCart {
+    width: 120px;
+}
+
+.detalleCart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.cartFooter {
+    text-align: center;
+}
