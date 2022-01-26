@@ -6,12 +6,36 @@ import { useCartContext } from '../context/cartContext'
 
 const CartWidget = () => {
 
-    const {totalUnidades} = useCartContext
+    const {totalUnidades} = useCartContext()
 
     return (
-        <div>
-         <a href="#"> <BsCart3 className='cartWidget' /> <h5> {totalUnidades()} </h5> </a>
-        </div>
+        <>
+            {totalUnidades === 0 ? (
+                    <div>
+                        <a href="#"> <BsCart3 className='cartWidget' /> </a>
+                    </div>
+                ) : (
+                    <div>
+                        <a href="#"> <BsCart3 className='cartWidget' /> <h5> {totalUnidades()} </h5> </a>
+                    </div>
+                )
+            }
+
+
+
+            {/* {
+                totalUnidades === 0 &&
+                <div>
+                    <a href="#"> <BsCart3 className='cartWidget' /> </a>
+                </div>
+            }
+            {
+                totalUnidades !== 0 &&
+                <div>
+                    <a href="#"> <BsCart3 className='cartWidget' /> <h5> {totalUnidades()} </h5> </a>
+                </div>
+            } */}
+        </>
     )
 }
 
