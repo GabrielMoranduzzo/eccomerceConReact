@@ -17,11 +17,11 @@ const Cart = () => {
                 <>
                         <div>
                             {cartList.map(prod => <div className="cartContainer" key={prod.id}> 
-                                                        <img className="imgCart" src={prod.img}/>  
+                                                        <img className="imgCart" src={prod.image}/>  
                                                         <div className="detalleCart"> 
-                                                            <h3> {prod.nombre} </h3>
+                                                            <h3> {prod.title} </h3>
                                                             <h3> Cantidad: {prod.cantidad} </h3>
-                                                            <h3> Precio : ${prod.precio} </h3>
+                                                            <h3> Precio : ${prod.price} </h3>
                                                             <button className='btn btn-danger' onClick={() => eliminarItem(prod.id)}>X</button>
                                                         </div> 
                                                     </div>)}

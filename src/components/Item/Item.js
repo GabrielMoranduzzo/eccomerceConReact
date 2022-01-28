@@ -13,12 +13,12 @@ const Item = ({prod}) => {
             >
                 <div className="card w-100 mt-5">
                     <div className="card-header">
-                        {`${prod.nombre} - ${prod.descripcion}`}
+                        {`${prod.title}`}
                     </div>
 
                     <div className="card-body">
-                        <img src={prod.img} alt='' className='w-50' />
-                        {prod.precio}
+                        <img src={prod.image} alt='' className='w-50' />
+                        Precio: ${prod.price}  {prod.description}
                     </div>
                     <div className="card-footer">
                         <Link to={`/detalle/${prod.id}`}>

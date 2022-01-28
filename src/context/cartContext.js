@@ -39,7 +39,7 @@ export const CartContextProvider = ({children}) => {
     const total = () => {
         let count = 0
         cartList.forEach((producto) => {
-            count += producto.precio * producto.cantidad
+            count += producto.price * producto.cantidad
         });
         return count
     }
