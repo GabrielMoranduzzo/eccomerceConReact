@@ -1,52 +1,35 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getFetch } from '../helper/mock'
 import Item from '../Item/Item'
 import ItemList from './ItemList'
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const {idCategoria} = useParams()
+    const {categoryId} = useParams()
 
     useEffect(() => {
+
         const db = getFirestore() 
-        const queryCollection = query(collection(db, 'items'))
-        getDocs(queryCollection)
+        const queryCollection = collection(db, 'items')
+        const queryFilterGet = categoryId ? query(queryCollection, where('categoria', '==' , categoryId)) : queryCollection
+
+        getDocs(queryFilterGet)
         .then(res => setProductos(res.docs.map(prod => ({ id: prod.id, ...prod.data() }) ) ))
-        .catch(err => console.log(err))
+        .catch(err => err)
         .finally(()=> setLoading(false))
 
-
-        // const queryCollectionCategory = query(collection(db, 'items'), where ('categoryId', '==', idCategoria))
-        // getDocs(queryCollection)
-        // .then(res => setProductos(res.docs.map(prod => ({ id: prod.id, ...prod.data() }) ) ))
-        // .catch(err => console.log(err))
-        // .finally(()=> setLoading(false))
-
-        // if (idCategoria) {
-        //     getFetch
-        //     .then(resp => setProductos(resp.filter(prod => prod.categoria === idCategoria)))
-        //     .catch(err => console.log(err))
-        //     .finally(()=> setLoading(false))
-        // } else {
-        //     getFetch
-        //     .then(resp => setProductos(resp))
-        //     .catch(err => console.log(err))
-        //     .finally(()=> setLoading(false))
-        // }
-    }, [idCategoria])
+    }, [categoryId])
 
     console.log(productos)
-    //console.log(idCategoria) 
+    console.log(categoryId) 
 
     return (
         <div>
-            <h1> {greeting} </h1>
             {loading ? (
                 <h3>Loading...</h3>
             ) : (

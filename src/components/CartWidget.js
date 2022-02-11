@@ -1,6 +1,6 @@
 import React from 'react'
 import { BsCart3 } from 'react-icons/bs'
-import Navbar from '../components/Navbar/Navbar.css'
+import NavBar from './Navbar/Navbar'
 import { useCartContext } from '../context/cartContext'
 
 

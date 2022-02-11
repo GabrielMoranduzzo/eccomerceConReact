@@ -18,8 +18,8 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route exact path='/' element={<ItemListContainer greeting='Bienvenidos a Mi Tienda!' />} />
-          <Route exact path='/categoria/:idCategoria' element={<ItemListContainer greeting='Bienvenidos a Mi Tienda!' />} />
+          <Route exact path='/' element={<ItemListContainer/>} />
+          <Route exact path='/categoria/:categoryId' element={<ItemListContainer/>} />
           <Route exact path='/detalle/:idDetalle' element={<ItemDetailContainer />} />
           <Route exact path='/cart' element={<Cart />} />
         </Routes>

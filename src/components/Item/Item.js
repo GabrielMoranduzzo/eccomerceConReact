@@ -13,7 +13,7 @@ const Item = ({prod}) => {
             >
                 <div className="card w-100 mt-5">
                     <div className="card-header">
-                        {`${prod.title}`}
+                        {`${prod.title} - ${prod.categoryId}`}
                     </div>
 
                     <div className="card-body">

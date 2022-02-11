@@ -7,5 +7,30 @@
 }
 
 .me-auto {
-    margin-left: 30%;
+    margin-left: 15%;
+}
+
+.aperitivosCateg {
+    margin-right: 30%;
+    text-decoration: none;
+    color: white;
+}
+
+
+.whiskiesCateg {
+    margin-right: 30%;
+    text-decoration: none;
+    color: white;
+}
+
+
+.vinosCateg {
+    margin-right: 30%;
+    text-decoration: none;
+    color: white;
+}
+
+.cervezasCateg{
+    text-decoration: none;
+    color: white;
 }
