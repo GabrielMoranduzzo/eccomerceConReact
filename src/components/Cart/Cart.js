@@ -2,17 +2,28 @@ import { useCartContext } from "../../context/cartContext"
 import { Link } from 'react-router-dom'
 import './Cart.css'
 import { addDoc, collection, documentId, getDocs, getFirestore, query, where, writeBatch } from "firebase/firestore"
+import { useState } from "react"
+import CheckOut from "../CheckOut/CheckOut"
 
 
 
 const Cart = () => {
 
     const { cartList, eliminarItem, vaciarCarrito, total } = useCartContext()
+    const [dataForm, setDataForm] = useState({
+        name: '',
+        phone:'',
+        adress: '',
+        email: ''
+    })
 
-    const realizarCompra = async () => {
+    const [condicional, setCondicional] = useState(false)
+
+    const realizarCompra = async (e) => {
+        e.preventDefault()
         let orden = {}
 
-        orden.buyer = {nombre: 'Gabriel', email: 'g@gmail.com', tel: '123456789'}
+        orden.buyer = dataForm
         orden.total = total();
 
         orden.items = cartList.map(cartItem => {
@@ -46,8 +57,19 @@ const Cart = () => {
             .finally(()=> console.log('stock actualizado'))
 
             batch.commit()
+            setCondicional(true)
     }
- 
+
+    function handleChange(e) {
+        setDataForm({
+            ...dataForm,
+            [e.target.name]: e.target.value
+        })
+    }
+    
+    console.log(dataForm)
+
+
     return (
         <>
             {cartList.length === 0 ? (
@@ -57,22 +79,7 @@ const Cart = () => {
                 </div>
             ) : (
                 <>
-                        <div>
-                            {cartList.map(prod => <div className="cartContainer" key={prod.id}> 
-                                                        <img className="imgCart" src={prod.image}/>  
-                                                        <div className="detalleCart"> 
-                                                            <h3> {prod.title} </h3>
-                                                            <h3> Cantidad: {prod.cantidad} </h3>
-                                                            <h3> Precio : ${prod.price} </h3>
-                                                            <button className='btn btn-danger' onClick={() => eliminarItem(prod.id)}>X</button>
-                                                        </div> 
-                                                    </div>)}
-                        </div>
-                        <div className="cartFooter">
-                        <h3>Total = ${total()}</h3>
-                        <button className='btn btn-danger' onClick={vaciarCarrito}>Vaciar Carrito</button>
-                        <button className='btn btn-danger' onClick={realizarCompra}>Generar Orden</button>
-                        </div>
+                    <CheckOut/>
                 </>
             )}
         </>

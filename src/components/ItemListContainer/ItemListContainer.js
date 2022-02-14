@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import Item from '../Item/Item'
 import ItemList from './ItemList'
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
+import './ItemListContainer.css'
 
 
 const ItemListContainer = () => {
@@ -16,7 +17,7 @@ const ItemListContainer = () => {
 
         const db = getFirestore() 
         const queryCollection = collection(db, 'items')
-        const queryFilterGet = categoryId ? query(queryCollection, where('categoria', '==' , categoryId)) : queryCollection
+        const queryFilterGet = categoryId ? query(queryCollection, where('categoryId', '==' , categoryId)) : queryCollection
 
         getDocs(queryFilterGet)
         .then(res => setProductos(res.docs.map(prod => ({ id: prod.id, ...prod.data() }) ) ))
@@ -31,7 +32,11 @@ const ItemListContainer = () => {
     return (
         <div>
             {loading ? (
-                <h3>Loading...</h3>
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             ) : (
                 <div>   
                     <ItemList productos={productos} /> 

@@ -9,6 +9,7 @@ import ItemDetail from "../ItemDetail/ItemDetail"
 
 const ItemDetailContainer = () => {
     const [producto, setproducto] = useState({})
+    const [loading, setLoading] = useState(true)
 
     const {idDetalle} = useParams()
 
@@ -19,17 +20,24 @@ const ItemDetailContainer = () => {
         const queryProd = doc(db, 'items', idDetalle)
         getDoc(queryProd)
         .then(resp => setproducto({id: resp.id, ...resp.data()}))
+        .catch(err => err)
+        .finally(()=> setLoading(false))
 
-
-        // getFetch
-        // .then(resp => setproducto(resp.find(prod => prod.id === idDetalle)))
     }, [])
 
     console.log(producto)
 
     return (
         <div>
-           <ItemDetail producto={producto} />
+            {loading ? (
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            ) : (
+                <div>   
+                    <ItemDetail producto={producto} /> 
+                </div>
+            )}
         </div>
     )
 }
