@@ -4,12 +4,14 @@ import './Cart.css'
 import { addDoc, collection, documentId, getDocs, getFirestore, query, where, writeBatch } from "firebase/firestore"
 import { useState } from "react"
 import CheckOut from "../CheckOut/CheckOut"
+import Resumen from "../Resumen/Resumen"
 
 
 
 const Cart = () => {
 
     const { cartList, eliminarItem, vaciarCarrito, total } = useCartContext()
+    const [condicional, setCondicional] = useState(false)
     const [dataForm, setDataForm] = useState({
         name: '',
         phone:'',
@@ -17,7 +19,7 @@ const Cart = () => {
         email: ''
     })
 
-    const [condicional, setCondicional] = useState(false)
+    const [idOrder, setIdOrder] = useState('')
 
     const realizarCompra = async (e) => {
         e.preventDefault()
@@ -38,7 +40,7 @@ const Cart = () => {
         const db = getFirestore()
         const ordenCollection = collection(db, 'orders')
         await addDoc(ordenCollection, orden)
-        .then(resp => console.log(resp))
+        .then(resp => setIdOrder(resp.id))
         .catch(err => console.log(err))
         .finally(()=> console.log('cargando'))
 
@@ -74,14 +76,17 @@ const Cart = () => {
         <>
             {cartList.length === 0 ? (
                 <div>
-                   <h2 className="h2CartVacio"> Aún no hay productos en el Carrito. Dirigite al home a ver nuestros productos </h2>
+                    <h2 className="h2CartVacio"> Aún no hay productos en el Carrito. Dirigite al home a ver nuestros productos </h2>
                     <Link to='/' ><button className="buttonCartVacio btn-success">Empezar a comprar</button></Link>
                 </div>
             ) : (
                 <>
-                    <CheckOut/>
-                </>
+                    <CheckOut />
+                </> 
             )}
+            {
+                condicional ? <CheckOut/> : <Resumen idOrder={idOrder} />
+            }
         </>
     )
 }

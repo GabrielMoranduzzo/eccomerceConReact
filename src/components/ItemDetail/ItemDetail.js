@@ -23,11 +23,13 @@ const ItemDetail = ({producto}) => {
        <div className='cardDetail'>
                  <div className="card  mt-5">
                     <div className="card-header">
-                        {producto.title}
+                        {producto.title} 
                     </div>
                     <div className="card-body">
                         <img src={producto.image} alt='' className='w-50' />
-                        {producto.price}
+                        Precio:$ {producto.price}
+                        <br/>
+                        {producto.description}
                     </div>
                 </div>
 

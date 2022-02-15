@@ -1,15 +1,15 @@
 import {Link} from 'react-router-dom'
-import React from 'react'
 
 
 
 const Item = ({prod}) => {
 
     return (
-        <div>
+        <div className='container'>
+
+            <div className='row col-md-3'>
             <div
                 key={prod.id}
-                className='col-md-4'
             >
                 <div className="card w-100 mt-5">
                     <div className="card-header">
@@ -18,7 +18,7 @@ const Item = ({prod}) => {
 
                     <div className="card-body">
                         <img src={prod.image} alt='' className='w-50' />
-                        Precio: ${prod.price}  {prod.description}
+                        Precio: ${prod.price}  
                     </div>
                     <div className="card-footer">
                         <Link to={`/detalle/${prod.id}`}>
@@ -28,7 +28,9 @@ const Item = ({prod}) => {
                         </Link>
                     </div>
                 </div>
+            </div> 
             </div>
+            
         </div>
     )
 }
