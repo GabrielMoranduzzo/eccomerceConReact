@@ -3,9 +3,7 @@ import React from 'react'
 function Resumen({idOrder}) {
   return (
     <div> 
-     <h4>
-     Compra realizada con éxito! Su codigo de órden es: {idOrder}
-     </h4>    
+      El id de la orden de compra es: {idOrder}    
     </div>
   )
 }

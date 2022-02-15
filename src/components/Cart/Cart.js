@@ -85,7 +85,7 @@ const Cart = () => {
                 </> 
             )}
             {
-                condicional ? <CheckOut/> : <Resumen idOrder={idOrder} />
+                condicional ? <CheckOut realizarCompra={realizarCompra}/> : <Resumen idOrder={idOrder} />
             }
         </>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 import { useCartContext } from "../../context/cartContext"
 import { useState } from "react"
 
-function CheckOut() {
+function CheckOut({realizarCompra}) {
 
 const { cartList, eliminarItem, vaciarCarrito, total } = useCartContext()
 
@@ -13,22 +13,22 @@ const [dataForm, setDataForm] = useState({
     email: ''
 })
 
-const realizarCompra = async (e) => {
-    e.preventDefault()
-    let orden = {}
+// const realizarCompra = async (e) => {
+//     e.preventDefault()
+//     let orden = {}
 
-    orden.buyer = dataForm
-    orden.total = total();
+//     orden.buyer = dataForm
+//     orden.total = total();
 
-    orden.items = cartList.map(cartItem => {
-        const id = cartItem.id;
-        const nombre = cartItem.title;
-        const precio = cartItem.price * cartItem.cantidad;
-        const cantidad = cartItem.cantidad
+//     orden.items = cartList.map(cartItem => {
+//         const id = cartItem.id;
+//         const nombre = cartItem.title;
+//         const precio = cartItem.price * cartItem.cantidad;
+//         const cantidad = cartItem.cantidad
 
-        return(id, nombre, precio, cantidad)
-})
-}
+//         return(id, nombre, precio, cantidad)
+// })
+// }
 
 function handleChange(e) {
     setDataForm({
