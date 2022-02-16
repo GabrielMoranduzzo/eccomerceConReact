@@ -12,7 +12,7 @@ export const CartContextProvider = ({children}) => {
 
     const [cartList, setCartList] = useState([])
 
-    function agregarAlCarrito(items) {    
+    function addToCart(items) {    
         const indice = cartList.findIndex((i) => i.id === items.id);
        
         if (indice > -1) {
@@ -26,12 +26,12 @@ export const CartContextProvider = ({children}) => {
         }
       }
 
-    function vaciarCarrito() {
+    function deleteCart() {
         setCartList([])
     }
 
 
-    const eliminarItem = (id) => {
+    const deleteItem = (id) => {
         const itemFiltrado = cartList.filter((producto) => producto.id !== id)
         setCartList(itemFiltrado)
     }
@@ -44,7 +44,7 @@ export const CartContextProvider = ({children}) => {
         return count
     }
 
-    const totalUnidades = () => {
+    const totalUnits = () => {
         let count = 0
         cartList.forEach((producto) =>{
             count += producto.cantidad
@@ -55,10 +55,10 @@ export const CartContextProvider = ({children}) => {
     return(
         <CartContext.Provider value={{
             cartList,
-            agregarAlCarrito,
-            eliminarItem,
-            vaciarCarrito,
-            totalUnidades,
+            addToCart,
+            deleteItem,
+            deleteCart,
+            totalUnits,
             total
         }} >
             {children}

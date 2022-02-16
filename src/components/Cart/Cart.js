@@ -10,7 +10,7 @@ import CheckOut from "../CheckOut/CheckOut"
 
 const Cart = () => {
 
-    const { cartList, eliminarItem, vaciarCarrito, total } = useCartContext()
+    const { cartList, deleteItem, deleteCart, total } = useCartContext()
     const [condicional, setCondicional] = useState(false)
     const [dataForm, setDataForm] = useState({
         name: '',
@@ -21,7 +21,7 @@ const Cart = () => {
 
     const [idOrder, setIdOrder] = useState('')
 
-    const realizarCompra = async (e) => {
+    const makePurchase = async (e) => {
         e.preventDefault()
         let orden = {}
 
@@ -60,7 +60,7 @@ const Cart = () => {
 
         batch.commit()
         setCondicional(true)
-        vaciarCarrito()
+        deleteCart()
     }
 
     function handleChange(e) {
@@ -82,7 +82,7 @@ const Cart = () => {
             {condicional ? (
                 <Resumen idOrder={idOrder} />
             ) : (
-                <CheckOut realizarCompra={realizarCompra} />
+                <CheckOut makePurchase={makePurchase} />
             )}
         </>
     )

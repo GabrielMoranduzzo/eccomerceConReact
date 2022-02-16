@@ -10,10 +10,10 @@ const ItemDetail = ({ producto }) => {
 
     const onAdd = (cant) => {
         setShow(false)
-        agregarAlCarrito({ ...producto, cantidad: cant })
+        addToCart({ ...producto, cantidad: cant })
     }
 
-    const { cartList, agregarAlCarrito } = useCartContext()
+    const { cartList, addToCart } = useCartContext()
 
     return (
         <div className='cardDetail'>
