@@ -41,7 +41,7 @@ const Cart = () => {
         const ordenCollection = collection(db, 'orders')
         await addDoc(ordenCollection, orden)
             .then(resp => setIdOrder(resp.id))
-            .catch(err => console.log(err))
+            .catch(err => err)
             .finally(() => console.log('cargando'))
 
         const queryCollection = collection(db, 'items')
@@ -55,11 +55,12 @@ const Cart = () => {
                 stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
             })
             ))
-            .catch(err => console.log(err))
+            .catch(err => err)
             .finally(() => console.log('stock actualizado'))
 
         batch.commit()
         setCondicional(true)
+        vaciarCarrito()
     }
 
     function handleChange(e) {
@@ -69,12 +70,10 @@ const Cart = () => {
         })
     }
     
-    console.log(dataForm)
-
 
     return (
         <>
-            {cartList.length === 0 &&
+            {cartList.length === 0 && !condicional &&
                 <div>
                     <h2 className="h2CartVacio"> Aún no hay productos en el Carrito. Dirigite al home a ver nuestros productos </h2>
                     <Link to='/' ><button className="buttonCartVacio btn-success">Empezar a comprar</button></Link>
@@ -83,7 +82,7 @@ const Cart = () => {
             {condicional ? (
                 <Resumen idOrder={idOrder} />
             ) : (
-                <CheckOut realizarCompra={realizarCompra}/>
+                <CheckOut realizarCompra={realizarCompra} />
             )}
         </>
     )

@@ -17,7 +17,7 @@ export const CartContextProvider = ({children}) => {
        
         if (indice > -1) {
           const cantidadVieja = cartList[indice].cantidad;
-          cartList.splice(indice, 1);  // El método splice() cambia el contenido de un array eliminando elementos existentes y/o agregando nuevos elementos. 
+          cartList.splice(indice, 1);   
           setCartList([...cartList,
             { ...items, cantidad: items.cantidad+ cantidadVieja },
           ]);

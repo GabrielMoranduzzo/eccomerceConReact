@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Item from '../Item/Item'
 import ItemList from './ItemList'
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import './ItemListContainer.css'
@@ -24,9 +23,6 @@ const ItemListContainer = () => {
             .finally(() => setLoading(false))
 
     }, [categoryId])
-
-    console.log(productos)
-    console.log(categoryId) 
 
     return (
         <div>

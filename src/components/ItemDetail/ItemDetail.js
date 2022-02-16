@@ -14,7 +14,6 @@ const ItemDetail = ({ producto }) => {
     }
 
     const { cartList, agregarAlCarrito } = useCartContext()
-    console.log(cartList);
 
     return (
         <div className='cardDetail'>
