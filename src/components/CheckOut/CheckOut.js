@@ -1,41 +1,23 @@
-import React from 'react'
 import { useCartContext } from "../../context/cartContext"
 import { useState } from "react"
 
-function CheckOut({realizarCompra}) {
+function CheckOut({ realizarCompra }) {
 
-const { cartList, eliminarItem, vaciarCarrito, total } = useCartContext()
+    const { cartList, eliminarItem, vaciarCarrito, total } = useCartContext()
 
-const [dataForm, setDataForm] = useState({
-    name: '',
-    phone:'',
-    adress: '',
-    email: ''
-})
-
-// const realizarCompra = async (e) => {
-//     e.preventDefault()
-//     let orden = {}
-
-//     orden.buyer = dataForm
-//     orden.total = total();
-
-//     orden.items = cartList.map(cartItem => {
-//         const id = cartItem.id;
-//         const nombre = cartItem.title;
-//         const precio = cartItem.price * cartItem.cantidad;
-//         const cantidad = cartItem.cantidad
-
-//         return(id, nombre, precio, cantidad)
-// })
-// }
-
-function handleChange(e) {
-    setDataForm({
-        ...dataForm,
-        [e.target.name]: e.target.value
+    const [dataForm, setDataForm] = useState({
+        name: '',
+        phone: '',
+        adress: '',
+        email: ''
     })
-}
+
+    function handleChange(e) {
+        setDataForm({
+            ...dataForm,
+            [e.target.name]: e.target.value
+        })
+    }
 
     return (
         <div>
@@ -64,8 +46,8 @@ function handleChange(e) {
                     placeholder="Nombre"
                     onChange={handleChange}
                     value={dataForm.name}
-                /> 
-                <br/>
+                />
+                <br />
                 <input
                     type='text'
                     name="phone"
@@ -73,27 +55,27 @@ function handleChange(e) {
                     onChange={handleChange}
                     value={dataForm.phone}
                 />
-                 <br/>
+                <br />
                 <input
                     type='text'
                     name="adress"
                     placeholder="Domicilio"
                     onChange={handleChange}
                     value={dataForm.adress}
-                /> 
-                <br/>
+                />
+                <br />
                 <input
                     type='email'
                     name='email'
                     placeholder="Email"
                     onChange={handleChange}
                     value={dataForm.email}
-                /> 
-                <br/>
+                />
+                <br />
                 <button className='btn btn-primary' onClick={realizarCompra}>Generar Orden</button>
             </form>
         </div>
-  )
+    )
 }
 
 export default CheckOut

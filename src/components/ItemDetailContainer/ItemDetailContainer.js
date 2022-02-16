@@ -10,17 +10,17 @@ const ItemDetailContainer = () => {
     const [producto, setproducto] = useState({})
     const [loading, setLoading] = useState(true)
 
-    const {idDetalle} = useParams()
+    const { idDetalle } = useParams()
 
-    useEffect(()=> {
+    useEffect(() => {
 
         const db = getFirestore()
 
         const queryProd = doc(db, 'items', idDetalle)
         getDoc(queryProd)
-        .then(resp => setproducto({id: resp.id, ...resp.data()}))
-        .catch(err => err)
-        .finally(()=> setLoading(false))
+            .then(resp => setproducto({ id: resp.id, ...resp.data() }))
+            .catch(err => err)
+            .finally(() => setLoading(false))
 
     }, [])
 
@@ -33,8 +33,8 @@ const ItemDetailContainer = () => {
                     <span class="sr-only">Loading...</span>
                 </div>
             ) : (
-                <div>   
-                    <ItemDetail producto={producto} /> 
+                <div>
+                    <ItemDetail producto={producto} />
                 </div>
             )}
         </div>

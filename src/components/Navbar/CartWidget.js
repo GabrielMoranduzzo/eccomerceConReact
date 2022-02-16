@@ -1,25 +1,23 @@
-import React from 'react'
 import { BsCart3 } from 'react-icons/bs'
-import NavBar from '../Navbar/Navbar'
 import { useCartContext } from '../../context/cartContext'
-import './Navbar/CartWidget.css'
+import './CartWidget.css'
 
 
 const CartWidget = () => {
 
-    const {totalUnidades} = useCartContext()
+    const { totalUnidades } = useCartContext()
 
     return (
         <>
             {totalUnidades() === 0 ? (
-                    <div>
-                        <a href="#"> <BsCart3 className='cartWidget' /> </a>
-                    </div>
-                ) : (
-                    <div>
-                        <a href="#" > <BsCart3 className='cartWidget' /> <h5 className='contador'> {totalUnidades()} </h5> </a>
-                    </div>
-                )
+                <div>
+                    <a href="#"> <BsCart3 className='cartWidget' /> </a>
+                </div>
+            ) : (
+                <div>
+                    <a href="#" > <BsCart3 className='cartWidget' /> <h5 className='contador'> {totalUnidades()} </h5> </a>
+                </div>
+            )
             }
         </>
     )

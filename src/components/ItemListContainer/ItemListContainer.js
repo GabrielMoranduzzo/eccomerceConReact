@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Item from '../Item/Item'
@@ -11,18 +10,18 @@ const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const {categoryId} = useParams()
+    const { categoryId } = useParams()
 
     useEffect(() => {
 
-        const db = getFirestore() 
+        const db = getFirestore()
         const queryCollection = collection(db, 'items')
-        const queryFilterGet = categoryId ? query(queryCollection, where('categoryId', '==' , categoryId)) : queryCollection
+        const queryFilterGet = categoryId ? query(queryCollection, where('categoryId', '==', categoryId)) : queryCollection
 
         getDocs(queryFilterGet)
-        .then(res => setProductos(res.docs.map(prod => ({ id: prod.id, ...prod.data() }) ) ))
-        .catch(err => err)
-        .finally(()=> setLoading(false))
+            .then(res => setProductos(res.docs.map(prod => ({ id: prod.id, ...prod.data() }))))
+            .catch(err => err)
+            .finally(() => setLoading(false))
 
     }, [categoryId])
 
@@ -38,8 +37,8 @@ const ItemListContainer = () => {
                     </div>
                 </div>
             ) : (
-                <div>   
-                    <ItemList productos={productos} /> 
+                <div>
+                    <ItemList productos={productos} />
                 </div>
             )}
         </div>
