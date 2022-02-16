@@ -18,16 +18,15 @@ const ItemDetail = ({ producto }) => {
 
     return (
         <div className='cardDetail'>
-            <div className="card  mt-5">
+            <div className="card  mt-5 text-center">
                 <div className="card-header">
-                    {producto.title}
+                <h4> {`${producto.title} `} </h4>
                 </div>
                 <div className="card-body">
                     <img src={producto.image} alt='' className='w-50' />
-                    Precio:$ {producto.price}
-                    <br />
-                    {producto.description}
+                    <h5> Precio: ${producto.price} </h5> 
                 </div>
+                <p> <b>Descripción del producto: </b>{producto.description} </p>
             </div>
 
             {show ? <ItemCount min={1} max={50} onAdd={onAdd} /> :

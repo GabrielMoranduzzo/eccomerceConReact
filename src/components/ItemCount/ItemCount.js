@@ -27,9 +27,12 @@ const ItemCount = ({ max, min, onAdd }) => {
     return (
         <div className='contador'>
             <h2 className='numberCount'>{count}</h2>
-            <button className='btn btn-outline-secondary' onClick={handleDecrement}>-</button>
-            <button className='btn btn-outline-secondary' onClick={() => onAdd(count)}>Agregar al Carrito</button>
-            <button className='btn btn-outline-secondary' onClick={handleIncrement}>+</button>
+            <br/> 
+            <div className='botones'>
+                <button className='btn btn-outline-secondary' onClick={handleDecrement}>-</button>
+                <button className='btn btn-outline-secondary' onClick={() => onAdd(count)}>Agregar al Carrito</button>
+                <button className='btn btn-outline-secondary' onClick={handleIncrement}>+</button>
+            </div>
         </div>
     )
 }

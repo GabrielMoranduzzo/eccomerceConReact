@@ -1,0 +1,10 @@
+.row{
+    margin: 1%;
+    margin-left: 5%;
+}
+
+.img-fluid {
+    max-width: 70%;
+    height: auto;
+    
+}

@@ -1,9 +1,11 @@
 
 
-function Resumen({idOrder}) {
+function Resumen({ idOrder }) {
   return (
-    <div> 
-      El id de la orden de compra es: {idOrder}    
+    <div>
+      <h4>
+        El id de la orden de compra es: {idOrder}
+      </h4>
     </div>
   )
 }

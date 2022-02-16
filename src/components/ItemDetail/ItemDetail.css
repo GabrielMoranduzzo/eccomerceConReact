@@ -1,3 +1,7 @@
 .cardDetail {
-    width: 18rem !important;
+    width: 30rem;
+    display: flex;
+    margin-left: 20%;
 }
+
+
