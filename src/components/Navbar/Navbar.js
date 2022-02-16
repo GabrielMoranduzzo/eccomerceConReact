@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { Navbar, Nav } from 'react-bootstrap';
 import logo from '../../assets/logoTienda.png'
 import { BsCart3 } from 'react-icons/bs'
-import CartWidget from '../CartWidget';
+import CartWidget from './CartWidget';
 import './Navbar.css'
 
 

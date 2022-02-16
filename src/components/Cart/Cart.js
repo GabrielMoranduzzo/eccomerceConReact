@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import './Cart.css'
 import { addDoc, collection, documentId, getDocs, getFirestore, query, where, writeBatch } from "firebase/firestore"
 import { useState } from "react"
-import CheckOut from "../CheckOut/CheckOut"
 import Resumen from "../Resumen/Resumen"
+import CheckOut from "../CheckOut/CheckOut"
 
 
 
@@ -74,22 +74,21 @@ const Cart = () => {
 
     return (
         <>
-            {cartList.length === 0 ? (
+            {cartList.length === 0 && 
                 <div>
                     <h2 className="h2CartVacio"> Aún no hay productos en el Carrito. Dirigite al home a ver nuestros productos </h2>
                     <Link to='/' ><button className="buttonCartVacio btn-success">Empezar a comprar</button></Link>
-                </div>
+                </div>}
+
+            { condicional ? (
+                <Resumen idOrder={idOrder} />
             ) : (
-                <>
-                    <CheckOut />
-                </> 
+                <CheckOut />
             )}
-            {
-                condicional ? <CheckOut realizarCompra={realizarCompra}/> : <Resumen idOrder={idOrder} />
-            }
         </>
     )
 }
+
 
 export default Cart
    
