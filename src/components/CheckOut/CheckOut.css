@@ -1,0 +1,44 @@
+.form {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.buttonCartVacio {
+    margin-left: 500px;
+}
+
+.cartContainer {
+    margin: 50px;
+    display: flex;
+    border: 2px solid gray;
+}
+
+.imgCart {
+    width: 120px;
+}
+
+.detalleCart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cartFooter {
+    text-align: center;
+}
+
+.title {
+    margin-left: 5%;
+} 
+
+.price {
+    margin-left: 10%;
+}
+
+.cant {
+    margin-left: 10%;
+}
+
+.btn{
+    margin-left: 5%;
+}
